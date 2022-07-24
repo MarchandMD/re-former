@@ -1,2 +1,26 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h2>form_tag</h2>
+<%= form_tag('/users') do %>
+  <div>
+    <%= label_tag 'username' %>
+    <%= text_field_tag 'user[username]' %>
+  </div>
+  <div>
+    <%= label_tag 'email' %>
+    <%= email_field_tag 'user[email]' %>
+  </div>
+  <div>
+    <%= label_tag 'password' %>
+    <%= password_field_tag 'user[password]' %>
+  </div>
+  <%= button_tag 'submit'%>
+  <% end %>
+  <h2>form_with</h2>
+  <%= form_with model: @user, url: users_path, local: true do |f| %>
+    <%= f.label "username" %>
+    <%= f.text_field 'username', placeholder: 'superUser22' %>
+    <%= f.label 'email' %>
+    <%= f.email_field 'email', placeholder: 'example@example.com' %>
+    <%= f.label 'password' %>
+    <%= f.password_field 'password' %>
+    <%= f.submit %>
+  <% end %>
